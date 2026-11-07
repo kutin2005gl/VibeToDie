@@ -27,10 +27,13 @@ interface Tokens {
   user: User
 }
 
+// Trình duyệt bỏ cookie `secure` trên trang http (ngoài localhost): đặt COOKIE_SECURE=false khi chạy sau HTTP thường.
+const cookieSecure = process.env.COOKIE_SECURE ? process.env.COOKIE_SECURE === 'true' : process.env.NODE_ENV === 'production'
+
 const cookieBase = {
   httpOnly: true,
   sameSite: 'lax' as const,
-  secure: process.env.NODE_ENV === 'production',
+  secure: cookieSecure,
   path: '/',
 }
 
