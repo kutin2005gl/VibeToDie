@@ -1,0 +1,27 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  /* Nunito mảnh ở cỡ 12–14px: chữ thường dùng 500 (cộng bậc dời trong fonts.css là file 600). */
+  font-weight: 500;
+  overflow: hidden;
+}
+h1, h2, h3 { font-family: var(--font-display); }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea, select { font: inherit; color: inherit; }
+a { color: var(--link); }
+::selection { background: var(--text-selection); color: var(--text-primary); }
+:focus-visible { outline-color: var(--link); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Đổi theme: hiệu ứng quét chạy bằng JS (app/theme.ts), tắt crossfade mặc định của View Transitions. */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+/* Danh sách của <select> gốc theo màu theme thay vì mặc định của trình duyệt. */
+option { background: var(--bg-raised); color: var(--text-primary); }

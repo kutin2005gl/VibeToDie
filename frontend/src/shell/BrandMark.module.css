@@ -1,0 +1,6 @@
+.logo {
+  display: inline-block; flex-shrink: 0;
+  background: currentColor;
+  mask-size: contain; mask-repeat: no-repeat; mask-position: center;
+  -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;
+}

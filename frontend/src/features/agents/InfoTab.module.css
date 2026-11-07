@@ -1,0 +1,8 @@
+.wrap { max-width: 770px; margin: 0 auto; padding: 22px var(--space-6) 40px; }
+.list { margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.list div { display: grid; grid-template-columns: 124px 1fr; align-items: baseline; }
+.list dt { color: var(--text-secondary); font-size: var(--fs-section); line-height: 1.5; }
+.list dd { margin: 0; font-family: var(--font-mono); font-size: var(--fs-body); line-height: 1.5; overflow-wrap: anywhere; }
+.section + .section { margin-top: 24px; }
+.section h2 { margin: 0 0 8px; font-size: var(--fs-section); font-weight: 600; }
+.list dd span { display: block; }

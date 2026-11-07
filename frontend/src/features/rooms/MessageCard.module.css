@@ -1,0 +1,8 @@
+.msg { display: flex; gap: var(--space-3); }
+.avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; color: var(--on-avatar); font-weight: 700; font-size: 12px; }
+.main { min-width: 0; }
+.main header { display: flex; align-items: center; gap: var(--space-2); }
+.main time { color: var(--text-muted); font-size: 11px; }
+.kind { padding: 0 6px; border-radius: var(--radius-sm); background: var(--bg-surface-hover); color: var(--text-secondary); font-size: 11px; }
+.main p { margin: 2px 0 0; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mono { font-family: var(--font-mono); font-size: var(--fs-caption); color: var(--text-secondary); }

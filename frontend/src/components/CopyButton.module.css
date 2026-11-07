@@ -1,0 +1,6 @@
+.btn {
+  display: inline-grid; place-items: center; width: 18px; height: 18px; padding: 0;
+  border: 0; background: transparent; color: var(--text-secondary); border-radius: var(--radius-sm);
+}
+.btn:hover { color: var(--text-primary); background: var(--bg-surface-hover); }
+.btn:focus-visible { outline: 1px solid var(--accent); }

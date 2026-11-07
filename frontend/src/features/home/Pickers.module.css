@@ -1,0 +1,61 @@
+.wrap { position: relative; }
+.trigger {
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 8px;
+  border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font-size: var(--fs-section);
+}
+.trigger:hover { background: var(--hover-tint); color: var(--text-primary); }
+.trigger:focus-visible { outline: 1px solid var(--accent); }
+.open, .open:hover { background: var(--selected-bg); color: var(--text-primary); }
+.panel {
+  position: absolute; z-index: 30; top: 100%; left: 0; margin-top: 6px;
+  background: var(--bg-raised); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-pop);
+}
+.agentPanel { width: 322px; padding: 6px 0 4px; }
+.folderPanel { width: 241px; padding: 6px 0 8px; }
+
+.search {
+  display: flex; align-items: center; gap: 8px; height: 34px; margin: 0 6px; padding: 0 10px;
+  background: var(--bg-input); color: var(--text-secondary); border: 2px solid var(--link); border-radius: var(--radius-md);
+}
+.search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font-size: var(--fs-body); }
+.scopes { display: flex; gap: 4px; padding: 6px 10px; border-bottom: 1px solid var(--border-subtle); }
+.scopes button { height: 22px; padding: 0 6px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font-size: var(--fs-caption); }
+.scopes button:hover { color: var(--text-primary); }
+.scopes .scopeOn { background: var(--bg-input); color: var(--text-primary); }
+.list { max-height: 300px; overflow-y: auto; }
+.section { padding: 8px 14px 4px; font-size: var(--fs-caption); font-weight: 600; color: var(--text-secondary); }
+.divider { margin-top: 4px; border-top: 1px solid var(--border-subtle); padding-top: 8px; }
+.none { margin: 0; padding: 10px 14px; color: var(--text-muted); font-size: var(--fs-caption); }
+.plain { margin: 0; padding: 4px 14px 6px; color: var(--text-secondary); font-size: var(--fs-caption); }
+
+.agentRow {
+  display: flex; align-items: flex-start; gap: 10px; width: 100%; padding: 8px 14px;
+  border: 0; background: transparent; text-align: left; color: var(--text-primary);
+}
+.agentRow:hover, .agentRow:focus-visible { background: var(--bg-raised-hover); outline: 0; }
+.agentText { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.agentName { display: flex; align-items: center; gap: 8px; font-size: var(--fs-section); font-weight: 600; }
+.agentName small { padding: 0 5px; border-radius: 3px; background: var(--bg-input); color: var(--text-secondary); font-size: 10px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+.ready, .offline { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-caption); }
+.ready { color: var(--success); }
+.offline { color: var(--text-muted); }
+.ready i, .offline i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.create {
+  display: flex; align-items: center; gap: 8px; width: 100%; height: 34px; padding: 0 14px;
+  border: 0; background: transparent; color: var(--text-primary); font-size: var(--fs-section);
+}
+.create:hover { background: var(--bg-raised-hover); }
+
+.folderRow {
+  display: flex; align-items: center; gap: 8px; width: 100%; height: 30px; padding: 0 14px;
+  border: 0; background: transparent; color: var(--text-primary); font-size: var(--fs-body); text-align: left;
+}
+.folderRow:hover { background: var(--bg-raised-hover); }
+.picked, .picked:hover { background: var(--selected-bg); }
+.newFolder {
+  display: flex; align-items: center; gap: 8px; height: 34px; margin: 2px 6px 0; padding: 0 10px;
+  background: var(--bg-input); color: var(--text-secondary); border: 2px solid var(--link); border-radius: var(--radius-md);
+}
+.newFolder input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font-size: var(--fs-body); }
+.search input::placeholder, .newFolder input::placeholder { color: var(--text-secondary); }

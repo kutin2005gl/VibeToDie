@@ -1,0 +1,26 @@
+.wrap { position: relative; flex-shrink: 0; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px;
+  background: var(--bg-input); color: var(--text-primary); font-size: var(--fs-body);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md); white-space: nowrap;
+}
+.btn:hover, .btn[aria-expanded='true'] { background: var(--bg-input-hover); }
+.btn:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+.menu {
+  position: absolute; z-index: 20; top: 100%; left: 0; margin: 4px 0 0; padding: 4px; list-style: none;
+  min-width: 100%; width: max-content; max-height: 360px; overflow-y: auto;
+  background: var(--bg-raised); border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-pop);
+}
+.right { left: auto; right: 0; }
+.item {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; height: 32px; padding: 0 8px;
+  border: 0; background: transparent; color: var(--text-primary); font-size: var(--fs-section);
+  border-radius: var(--radius-sm); text-align: left;
+}
+.item:hover, .item:focus-visible { background: var(--bg-raised-hover); outline: 0; }
+.selected, .selected:hover { background: var(--selected-bg); }
+
+.ghost { height: 26px; padding: 0 6px; gap: 6px; background: transparent; border-color: transparent; color: var(--text-secondary); font-size: var(--fs-caption); }
+.ghost:hover, .ghost[aria-expanded='true'] { background: var(--hover-tint); color: var(--text-primary); }
+.up { top: auto; bottom: 100%; margin: 0 0 4px; }
