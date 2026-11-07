@@ -1,0 +1,12 @@
+.panel { width: 245px; flex-shrink: 0; border-left: 1px solid var(--border-subtle); display: flex; flex-direction: column; overflow: auto; }
+.panel header { height: 44px; display: flex; align-items: center; gap: 2px; padding: 0 var(--space-3); border-bottom: 1px solid var(--border-subtle); }
+.panel header strong { margin-right: auto; font-size: var(--fs-section); }
+.panel header small { color: var(--accent); margin-left: 2px; }
+.panel header button { border: 0; background: transparent; color: var(--text-secondary); padding: 4px; border-radius: var(--radius-sm); display: grid; place-items: center; }
+.panel header button:hover { background: var(--bg-surface-hover); }
+.panel h3 { margin: var(--space-3) var(--space-3) var(--space-1); font-size: var(--fs-caption); font-weight: 500; color: var(--text-secondary); }
+.row { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3); }
+.row > div { display: flex; flex-direction: column; min-width: 0; }
+.row code { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+.avatar { position: relative; width: 28px; height: 28px; border-radius: var(--radius-md); flex-shrink: 0; display: grid; place-items: center; color: var(--on-avatar); font-weight: 700; font-size: 12px; }
+.on { position: absolute; right: -3px; bottom: -3px; width: 8px; height: 8px; border-radius: 50%; background: var(--success); border: 2px solid var(--bg-app); }

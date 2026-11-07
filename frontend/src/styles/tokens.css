@@ -1,0 +1,163 @@
+/*
+ * Design tokens — chuẩn ngành, tông màu lấy cảm hứng từ Perplexity:
+ * nền trắng ngà ấm, chữ đen ánh xanh rêu, nút chính tối, xanh ngọc chỉ cho link/focus/chọn.
+ */
+:root {
+  /* Nền */
+  --bg-app: #fcfcf9;
+  --bg-sidebar: #f3f3ee;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f6f6f1;
+  --bg-raised: #ffffff;          /* menu, popup, dialog */
+  --bg-raised-hover: #f3f3ee;
+  --bg-input: #ffffff;
+  --bg-input-hover: #fafaf6;
+  --bg-subtle: #efefe9;          /* chip, nút phụ, đầu bảng */
+  --bg-sunken: #f7f7f3;          /* vùng log, bảng, code */
+  --overlay: rgba(19, 52, 59, 0.35);
+  --hover-tint: rgba(19, 52, 59, 0.05);
+  --shadow-pop: 0 8px 28px rgba(19, 52, 59, 0.1);
+
+  /* Viền và chữ */
+  --border-subtle: #e5e4dd;
+  --border-strong: #d1d0c8;
+  --text-primary: #13343b;
+  --text-secondary: #4a5e63;
+  --text-muted: #5f6e70;
+
+  /* Hành động và chọn */
+  --accent: #13343b;
+  --accent-hover: #0d2930;
+  --accent-strong: #13343b;
+  --accent-muted: #a9b5b7;
+  --on-accent: #ffffff;
+  --link: #1c7581;
+  --selected-bg: #e3f0f1;
+  /* Bôi đen chữ: đậm hơn --selected-bg (nền mục đang chọn), vì nó nằm trên nền trắng của nội dung */
+  --text-selection: rgba(28, 117, 129, 0.3);
+  --nav-active-bg: #e7e7e1;
+  --focus-ring: rgba(32, 128, 141, 0.3);
+
+  /* Sidebar */
+  --nav-fg: #13343b;
+  --nav-fg-active: #13343b;
+  --nav-hover-bg: #eaeae4;
+  --nav-muted: #5f6e70;
+
+  /* Trạng thái */
+  --success: #237047;
+  --success-bg: #e8f3ec;
+  --success-border: #bfdcc9;
+  --warning: #8a5a00;
+  --warning-bg: #fbf1dc;
+  --danger: #b3261e;
+  --danger-bg: #fbeceb;
+  --danger-border: #efc4bf;
+  --on-avatar: #13343b;
+  --tint-1: #f3f3ee;
+  --tint-2: #efefe9;
+
+  /* Màu phân loại (avatar agent, series biểu đồ): dịu, đọc được chữ #13343b ở trên. */
+  --series-1: #9cc8ca;
+  --series-2: #c5b9df;
+  --series-3: #a8cea2;
+  --series-4: #e6c488;
+  --series-5: #e7a898;
+  --series-6: #8fa3c9;
+  --series-7: #c58aa6;
+  --series-8: #e4b48c;
+  --scrollbar: #d1d0c8;
+  --login-bg: #f3f3ee;
+  --brand-a: #20808d;
+  --brand-b: #13343b;
+
+  /* Chữ: đầu nét tròn, ngộ nghĩnh như logo BOA (font đóng gói qua @fontsource, xem main.tsx). */
+  --font-sans: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Cascadia Mono', Consolas, monospace;
+  --fs-title: 18px;
+  --fs-section: 14px;
+  --fs-body: 13px;
+  --fs-caption: 12px;
+  --fs-eyebrow: 11px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --sidebar-w: 224px;
+  --sidebar-w-collapsed: 60px;
+  --page-header-h: 52px;
+}
+
+/*
+ * Theme tối — tông Perplexity dark: nền than ấm, chữ trắng ngà, nút chính sáng,
+ * xanh ngọc sáng cho link/focus/chọn. data-theme do index.html và app/theme.ts đặt.
+ * Màu phân loại (--series-*, --on-avatar) giữ nguyên: nền pastel, chữ tối.
+ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Nền */
+  --bg-app: #191a1a;
+  --bg-sidebar: #202222;
+  --bg-surface: #202222;
+  --bg-surface-hover: #2a2c2c;
+  --bg-raised: #252727;
+  --bg-raised-hover: #2f3132;
+  --bg-input: #202222;
+  --bg-input-hover: #252727;
+  --bg-subtle: #2a2c2c;
+  --bg-sunken: #1d1e1e;
+  --overlay: rgba(0, 0, 0, 0.55);
+  --hover-tint: rgba(232, 232, 230, 0.06);
+  --shadow-pop: 0 8px 28px rgba(0, 0, 0, 0.45);
+
+  /* Viền và chữ */
+  --border-subtle: #2f3132;
+  --border-strong: #3d3f40;
+  --text-primary: #e8e8e6;
+  --text-secondary: #b4b8b8;
+  --text-muted: #8d9191;
+
+  /* Hành động và chọn */
+  --accent: #e8e8e6;
+  --accent-hover: #ffffff;
+  --accent-strong: #e8e8e6;
+  --accent-muted: #5a5e5e;
+  --on-accent: #191a1a;
+  --link: #1fb8cd;
+  --selected-bg: #173a40;
+  --text-selection: rgba(31, 184, 205, 0.38);
+  --nav-active-bg: #2a2c2c;
+  --focus-ring: rgba(31, 184, 205, 0.35);
+
+  /* Sidebar */
+  --nav-fg: #e8e8e6;
+  --nav-fg-active: #e8e8e6;
+  --nav-hover-bg: #262828;
+  --nav-muted: #8d9191;
+
+  /* Trạng thái */
+  --success: #5bc58a;
+  --success-bg: #17291f;
+  --success-border: #24533a;
+  --warning: #e0b056;
+  --warning-bg: #2e2614;
+  --danger: #f28b82;
+  --danger-bg: #3a1d1b;
+  --danger-border: #5c2b27;
+  --tint-1: #202222;
+  --tint-2: #2a2c2c;
+
+  --scrollbar: #3d3f40;
+  --login-bg: #202222;
+  --brand-a: #1fb8cd;
+  --brand-b: #e8e8e6;
+}

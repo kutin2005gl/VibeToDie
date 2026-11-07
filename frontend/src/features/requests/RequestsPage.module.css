@@ -1,0 +1,45 @@
+/* Luồng: một cột đọc ~720px ở giữa. */
+.thread { height: 100%; min-width: 0; display: flex; flex-direction: column; background: var(--bg-app); }
+.head { height: var(--page-header-h); flex-shrink: 0; display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--space-6); border-bottom: 1px solid var(--border-subtle); }
+.head h2 { margin: 0; flex: 1; min-width: 0; font-size: var(--fs-section); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scroll { flex: 1; overflow: auto; }
+.column { max-width: 720px; margin: 0 auto; padding: var(--space-6) var(--space-6) 40px; display: flex; flex-direction: column; gap: 18px; }
+/* Tin mới vào thì hiện dần và trồi nhẹ lên, thay cho bật ra tức thì. Chỉ chạy lúc tin xuất hiện. */
+.column > * { animation: enter 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes enter { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .column > * { animation: none; } }
+/* Ô soạn tin nổi trên cuối luồng: dải mờ phía trên để nội dung cuộn tới thì nhạt dần thay vì dính sát vào ô. */
+.composer {
+  position: relative; width: 100%; max-width: 720px; margin: -32px auto 0; padding-top: 32px;
+  background: linear-gradient(to bottom, transparent, var(--bg-app) 28px);
+}
+
+/* Room mới: lời mời ở giữa màn, ô soạn lớn và vài ví dụ bấm được. */
+.fresh { height: 100%; overflow: auto; display: grid; place-items: center; padding: var(--space-6); }
+.freshInner { width: min(640px, 100%); display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-3); color: var(--text-primary); }
+.freshInner > svg { transform: translateY(-10px); }
+.freshInner h1 { margin: 4px 0 0; font-family: 'SVN Be Cool', cursive; font-size: 24px; font-weight: 400; font-synthesis: none; }
+/* Logo nằm trong dòng chữ: chân logo ngang chân chữ, hai vạch lấp lánh nhô lên trên như ở sidebar. */
+.inlineLogo { display: inline-block; vertical-align: -3px; margin: 0 2px; }
+.inlineLogo > span { display: block; }
+
+.freshInner p { margin: -6px 0 var(--space-2); max-width: 480px; color: var(--text-secondary); line-height: 1.55; }
+.slot { width: 100%; text-align: left; }
+.slot > div { padding: 0; }
+.slot textarea { min-height: 48px; }
+.examples { display: flex; flex-direction: column; align-items: stretch; gap: 6px; width: 100%; margin-top: var(--space-2); }
+.examples button {
+  padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: transparent;
+  color: var(--text-secondary); text-align: left;
+}
+.examples button:hover { background: var(--bg-surface); color: var(--text-primary); border-color: var(--border-strong); }
+
+
+@font-face {
+  font-family: 'SVN Be Cool';
+  src: url('../../assets/fonts/svn-be-cool.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+.boaName { font-family: 'SVN Be Cool', cursive; font-weight: 400; font-synthesis: none; }
