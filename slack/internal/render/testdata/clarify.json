@@ -1,0 +1,26 @@
+{
+  "id": 102,
+  "title": "Anh cần 3 việc: (1) đơn DH1002 của chị Trần Thị…",
+  "status": "waiting",
+  "items": [
+    {
+      "at": "2026-11-02T11:08:51.747959+00:00",
+      "id": "1",
+      "body": "Anh cần 3 việc: (1) đơn DH1002 của chị Trần Thị Bình đang giao tới đâu, (2) mở ticket IT vì mạng ở chi nhánh STORE_BT chập chờn, (3) tóm tắt doanh thu tháng 10 theo từng chi nhánh.",
+      "kind": "request"
+    },
+    {
+      "at": "2026-11-02T11:12:45.711629+00:00",
+      "id": "2",
+      "kind": "route",
+      "agent": "coordinator",
+      "branch": "multi"
+    },
+    {
+      "at": "2026-11-02T11:12:45.711660+00:00",
+      "id": "3",
+      "kind": "clarify",
+      "question": "Đơn DH1002 trong hệ thống ghi tên khách là \"Lê Minh\" (email binh.tran@example.com), không khớp với tên \"Trần Thị Bình\" trong yêu cầu. Vui lòng xác nhận: đơn DH1002 có đúng là đơn của khách Trần Thị Bình cần tra không, hay mã đơn hoặc tên khách bị nhầm?"
+    }
+  ]
+}

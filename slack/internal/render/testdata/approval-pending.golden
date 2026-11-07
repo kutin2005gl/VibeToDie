@@ -1,0 +1,40 @@
+== state
+approval
+
+== timeline
+↪️ Chuyển cho Điều phối
+📋 Điều phối lập kế hoạch 1 bước
+▶️ *Soạn email hoàn tiền đơn DH1014* · Chăm sóc khách hàng
+      💬 Chăm sóc khách hàng đã trả lời
+      ✅ Điều phối: Đã kiểm tra email hoàn tiền: nội dung đầy đủ, đúng số tiền và đúng yêu cầu không nêu mốc thời gian; kết quả đạt.
+🔒 Đang chờ bạn duyệt (thẻ bên dưới).
+
+== answer
+Email thông báo hoàn tiền đơn DH1014 (OPPO Reno 12 256GB) cho Anh/Chị Nguyễn Văn An đã được soạn xong, đúng các yêu cầu: số tiền hoàn 9.432.000 ₫ (đã thanh toán 11.790.000 ₫ trừ phí khấu hao 20% là 2.358.000 ₫), hoàn qua chuyển khoản ngân hàng vào tài khoản chính chủ, Kế toán sẽ thông báo thời gian cụ thể và thư không nêu bất kỳ mốc thời gian nào.
+Hành động chờ duyệt: việc gửi email tới minh.le@example.com đang nằm trong hàng đợi chờ nhân viên duyệt — email CHƯA được gửi đi. Cần bấm duyệt thì khách mới nhận được thư.
+Cần lưu ý thêm: khi Kế toán xác định được thời điểm chuyển khoản, cần thông báo cụ thể cho khách ở một email hoặc cuộc gọi riêng.
+
+== card
+header: Cần bạn duyệt
+text: 🔒 Cần bạn duyệt: Gửi email cho khách?
+-- section
+*Gửi email cho khách?*
+-- section
+*Đến:* minh.le@example.com
+*Tiêu đề:* Thông báo hoàn tiền đơn hàng DH1014 – OPPO Reno 12 256GB
+-- section
+> Kính gửi Anh/Chị Nguyễn Văn An,
+> 
+> Chúng tôi liên hệ để thông báo về khoản hoàn tiền cho đơn hàng DH1014 – sản phẩm OPPO Reno 12 256GB.
+> 
+> Số tiền hoàn lại là 9.432.000 ₫, được tính bằng số tiền Anh/Chị đã thanh toán 11.790.000 ₫ trừ phí khấu hao 20% giá trị hóa đơn là 2.358.000 ₫.
+> 
+> Phiếu hoàn tiền cho đơn hàng của Anh/Chị đã được Kế toán trưởng phê duyệt. Khoản tiền sẽ được hoàn qua chuyển khoản ngân hàng vào tài khoản chính chủ của Anh/Chị. Bộ phận Kế toán sẽ thông báo cho Anh/Chị thời gian chuyển khoản cụ thể.
+> 
+> Nếu Anh/Chị cần thêm thông tin, vui lòng liên hệ lại với chúng tôi.
+> 
+> Trân trọng cảm ơn Anh/Chị.
+-- section
+_Đồng ý thì hệ thống gửi đúng email trên cho khách, một lần. Hệ thống không chuyển tiền._
+-- button Duyệt boa_approve=141 primary
+-- button Từ chối boa_reject=141 danger
