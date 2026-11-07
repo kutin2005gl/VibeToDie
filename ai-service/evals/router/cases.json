@@ -1,0 +1,40 @@
+[
+  {"id": "policy-1", "text": "Quy định đổi trả máy bị lỗi do nhà sản xuất là trong bao nhiêu ngày?", "expected_choice": "policy_lookup", "expected_missing": false},
+  {"id": "policy-2", "text": "Chính sách bảo hành của công ty áp dụng cho pin điện thoại như thế nào?", "expected_choice": "policy_lookup", "expected_missing": false},
+  {"id": "policy-3", "text": "Quy trình cho khách mua trả góp qua thẻ tín dụng gồm những bước nào?", "expected_choice": "policy_lookup", "expected_missing": false},
+
+  {"id": "accounting-1", "text": "Đơn DH1001 khách đã trả 21.990.000đ, giờ khách đổi sang Samsung Galaxy S25 256GB giá 18.490.000đ thì mình phải hoàn lại khách bao nhiêu?", "expected_choice": "orders", "expected_missing": false},
+  {"id": "accounting-2", "text": "So sánh giúp tổng số tiền khách phải trả khi mua Xiaomi 15 256GB trả góp 6 tháng và 12 tháng.", "expected_choice": "orders", "expected_missing": false},
+  {"id": "accounting-3", "text": "Đối soát thanh toán đơn DH1002: hệ thống ghi đã thu 0đ nhưng ngân hàng báo đã trừ tiền thẻ của khách.", "expected_choice": "orders", "expected_missing": false},
+
+  {"id": "cskh-1", "text": "Khách nhắn: \"Máy mới mua 2 ngày đã nóng ran, tôi rất bực mình\". Phân tích giúp khách cần gì và soạn tin nhắn trả lời khách.", "expected_choice": "customer_service", "expected_missing": false},
+  {"id": "cskh-2", "text": "Tổng hợp giúp các phản hồi của khách tuần này về dịch vụ bảo hành: \"chờ lâu quá\", \"nhân viên nhiệt tình\", \"sửa xong vẫn lỗi\", \"chờ 2 tuần chưa có máy\".", "expected_choice": "customer_service", "expected_missing": false},
+  {"id": "cskh-3", "text": "Soạn kịch bản gọi điện chăm sóc khách sau 7 ngày mua máy, hỏi thăm trải nghiệm và giới thiệu gói bảo hành mở rộng.", "expected_choice": "customer_service", "expected_missing": false},
+
+  {"id": "executive-1", "text": "Làm báo cáo doanh thu tháng 9 theo từng cửa hàng cho giám đốc.", "expected_choice": "executive", "expected_missing": false},
+  {"id": "executive-2", "text": "So sánh số lượng khiếu nại quý 3 với quý 2 trên toàn công ty và chỉ ra xu hướng.", "expected_choice": "executive", "expected_missing": false},
+  {"id": "executive-3", "text": "Soạn thông báo nội bộ gửi các cửa hàng trưởng về lịch họp giao ban tháng 11.", "expected_choice": "executive", "expected_missing": false},
+
+  {"id": "it-1", "text": "Máy POS ở cửa hàng CN Quận 1 không in được hóa đơn từ sáng nay.", "expected_choice": "it_support", "expected_missing": false},
+  {"id": "it-2", "text": "Tài khoản nhân viên NV023 bị khóa, không đăng nhập được phần mềm bán hàng.", "expected_choice": "it_support", "expected_missing": false},
+  {"id": "it-3", "text": "Ticket IT-245 về lỗi mạng wifi cửa hàng đang xử lý tới đâu rồi?", "expected_choice": "it_support", "expected_missing": false},
+
+  {"id": "operations-1", "text": "Đơn DH1001 đã giao cho khách chưa, giao ngày nào?", "expected_choice": "orders", "expected_missing": false},
+  {"id": "operations-2", "text": "Hiện còn bao nhiêu máy Xiaomi 15 256GB trong kho?", "expected_choice": "orders", "expected_missing": false},
+  {"id": "operations-3", "text": "Máy iPhone 16 128GB của khách trong đơn DH1001 có còn trong thời hạn bảo hành không?", "expected_choice": "orders", "expected_missing": false},
+
+  {"id": "multi-1", "text": "Khách đơn DH1001 báo máy lỗi và muốn trả máy lấy lại tiền: kiểm tra điều kiện đổi trả, tính số tiền hoàn và soạn email trả lời khách.", "expected_choice": "multi_department", "expected_missing": false},
+  {"id": "multi-2", "text": "Kiểm tra tồn kho Samsung Galaxy S25 256GB, tính giá sau khuyến mãi tháng 10 rồi soạn tin nhắn tư vấn gửi khách.", "expected_choice": "multi_department", "expected_missing": false},
+  {"id": "multi-3", "text": "Đơn DH1003 giao trễ 5 ngày: xem tình trạng giao hàng, tính khoản bồi thường theo chính sách và soạn thư xin lỗi khách.", "expected_choice": "multi_department", "expected_missing": false},
+
+  {"id": "unknown-1", "text": "Xếp lịch ca làm việc cho nhân viên cửa hàng Quận 7 tuần sau.", "expected_choice": "no_fitting_agent", "expected_missing": false},
+  {"id": "unknown-2", "text": "Thiết kế banner quảng cáo cho đợt khuyến mãi Black Friday đăng lên fanpage.", "expected_choice": "no_fitting_agent", "expected_missing": false},
+  {"id": "unknown-3", "text": "Lọc CV các ứng viên nộp vào vị trí nhân viên bán hàng và chọn ra 5 người phỏng vấn.", "expected_choice": "no_fitting_agent", "expected_missing": false},
+
+  {"id": "missing-1", "text": "Kiểm tra giúp tôi đơn hàng của khách này.", "expected_choice": "orders", "expected_missing": true},
+  {"id": "missing-2", "text": "Khách hỏi máy còn bảo hành không?", "expected_choice": "orders", "expected_missing": true},
+  {"id": "missing-3", "text": "Tính tiền hoàn cho khách giúp tôi.", "expected_choice": "orders", "expected_missing": true},
+  {"id": "missing-4", "text": "Ticket của tôi xử lý tới đâu rồi?", "expected_choice": "it_support", "expected_missing": true},
+  {"id": "missing-5", "text": "Soạn tin nhắn trả lời khách đang phàn nàn.", "expected_choice": "customer_service", "expected_missing": true},
+  {"id": "missing-6", "text": "Đơn đó giao chưa?", "expected_choice": "orders", "expected_missing": true}
+]
