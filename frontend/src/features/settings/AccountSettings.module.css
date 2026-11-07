@@ -1,0 +1,22 @@
+.profile {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: 20px 0 18px; border-bottom: 1px solid var(--border-subtle);
+}
+.avatar {
+  width: 42px; height: 42px; flex-shrink: 0; display: grid; place-items: center;
+  border-radius: var(--radius-lg); background: var(--bg-subtle); border: 1px solid var(--border-subtle);
+  color: var(--text-secondary); font-size: var(--fs-section);
+}
+.nameLine { display: flex; align-items: center; gap: var(--space-2); }
+.name { font-size: 15px; font-weight: 600; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px;
+  border-radius: 999px; background: var(--success-bg); border: 1px solid var(--success-border);
+  color: var(--success); font-size: var(--fs-caption);
+}
+.email { margin-top: 2px; font-size: var(--fs-section); color: var(--text-secondary); }
+.note { margin-top: 2px; font-size: var(--fs-caption); color: var(--text-muted); }
+.neutral { background: var(--bg-subtle); border-color: var(--border-strong); }
+.neutral:hover { background: var(--bg-surface-hover); }
+.danger { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger); }
+.danger:hover { background: var(--danger-border); }

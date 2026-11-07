@@ -1,0 +1,25 @@
+.card {
+  display: grid; grid-template-columns: 16px 1fr; column-gap: 10px; max-width: 576px;
+  margin-top: 25px; padding: 14px 14px 10px;
+  background: var(--bg-sunken); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+}
+.cardIcon { color: var(--success); margin-top: 2px; }
+.cardTitle { font-size: var(--fs-section); font-weight: 600; }
+.cardDesc { margin: 2px 0 0; font-size: var(--fs-caption); color: var(--text-secondary); line-height: 1.35; }
+.cardFoot {
+  grid-column: 1 / -1; margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--border-subtle); font-size: var(--fs-caption); color: var(--success);
+}
+.heading { margin: 24px 0 0; font-size: var(--fs-section); font-weight: 600; }
+.sub { margin: 2px 0 0; font-size: var(--fs-caption); color: var(--text-secondary); }
+.field { margin-top: 18px; }
+.label { display: block; font-size: var(--fs-body); font-weight: 600; margin-bottom: 6px; }
+.input {
+  display: block; width: 320px; max-width: 100%; height: 32px; padding: 0 10px;
+  background: var(--bg-input); color: var(--text-primary); font-family: var(--font-mono); font-size: var(--fs-body);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+}
+.input::placeholder { color: var(--text-muted); }
+.input:focus-visible { outline: 1px solid var(--accent); }
+.hint { margin: 6px 0 0; font-size: var(--fs-caption); color: var(--text-secondary); line-height: 1.35; max-width: 700px; }
+.save { margin-top: 18px; height: 32px; padding: 0 12px; }

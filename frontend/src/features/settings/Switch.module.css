@@ -1,0 +1,11 @@
+.track {
+  width: 32px; height: 18px; padding: 0; position: relative; display: block;
+  border: 0; border-radius: 9px; background: var(--border-strong); transition: background 0.12s;
+}
+.track i {
+  position: absolute; top: 2px; left: 2px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--bg-surface); transition: left 0.12s;
+}
+.on { background: var(--accent); }
+.on i { left: 16px; }
+.track:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }

@@ -1,0 +1,27 @@
+.heading { margin: 26px 0 0; font-size: 16px; font-weight: 600; }
+.gap { margin-top: 36px; }
+.desc { margin: 6px 0 0; font-size: var(--fs-section); color: var(--text-secondary); line-height: 1.4; }
+.bigBtn {
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; margin-top: 14px; padding: 0 12px;
+  background: var(--bg-input); color: var(--text-primary); font-size: var(--fs-section); font-weight: 600;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+}
+.bigBtn:hover { background: var(--bg-input-hover); }
+.levelRow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: 22px; }
+.levelTitle { font-size: var(--fs-body); font-weight: 600; }
+.levelHint { margin-top: 3px; font-size: var(--fs-caption); color: var(--text-muted); }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: 14px; }
+.toolButtons { display: flex; gap: 8px; }
+.tool {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px;
+  background: var(--bg-input); color: var(--text-primary); font-size: var(--fs-body); font-weight: 500;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+}
+.tool:hover { background: var(--bg-input-hover); }
+.log {
+  margin: 8px 0 0; height: 280px; overflow: auto; padding: 8px 10px;
+  background: var(--bg-sunken); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  font-family: var(--font-mono); font-size: 11.5px; line-height: 1.4; color: var(--text-primary);
+  white-space: pre-wrap; word-break: break-all;
+}
+.bigBtn:focus-visible, .tool:focus-visible, .log:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }

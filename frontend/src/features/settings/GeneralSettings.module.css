@@ -1,0 +1,26 @@
+.heading { margin: 0; padding: 26px 0 12px; font-size: 16px; font-weight: 600; }
+.second { margin-top: 28px; }
+.second .heading { padding-top: 14px; }
+.value { font-size: var(--fs-section); color: var(--text-secondary); }
+.stack { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.buttons { display: flex; gap: 8px; }
+
+.small {
+  display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 8px;
+  background: var(--bg-input); color: var(--text-primary); font-size: var(--fs-caption); font-weight: 600;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+}
+.small:hover { background: var(--bg-input-hover); }
+.small:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.primary:hover { background: var(--accent-hover); }
+
+.segmented { display: inline-flex; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+.segmented button {
+  height: 24px; padding: 0 11px; border: 0; background: var(--bg-input);
+  color: var(--text-secondary); font-size: var(--fs-caption);
+}
+.segmented button + button { border-left: 1px solid var(--border-strong); }
+.segmented button:hover { color: var(--text-primary); }
+.segmented button:focus-visible { outline: 1px solid var(--accent); outline-offset: -2px; }
+.segmented .segOn { background: var(--selected-bg); color: var(--text-primary); }

@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package orders.v1;
+
+option go_package = "nexus/proto/orders/v1;ordersv1";
+
+// Read-only access to orders and products for ai-service.
+// Field names match the JSON of order-service's HTTP API so an agent claim's
+// `ref.path` is the same over both transports.
+//
+// Call metadata:
+//   x-internal-token      shared secret (INTERNAL_TOKEN); missing/wrong -> UNAUTHENTICATED
+//   x-user-id             requester id; missing -> UNAUTHENTICATED
+//   x-user-departments    comma-separated; needs cskh or executive, else PERMISSION_DENIED
+// Errors: NOT_FOUND, INVALID_ARGUMENT (bad id format / short query), UNAVAILABLE.
+service OrdersService {
+  rpc GetOrder(GetOrderRequest) returns (Order);
+  rpc GetProduct(GetProductRequest) returns (Product);
+  rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResponse);
+  rpc GetStock(GetStockRequest) returns (Stock);
+}
+
+message GetOrderRequest { string order_id = 1; }  // ^DH\d+$, e.g. DH1001
+
+message Order {
+  string order_id = 1;
+  string customer_name = 2;
+  string product_id = 3;
+  string product_name = 4;
+  int32 quantity = 5;
+  int64 unit_price = 6;                // VND
+  int64 discount = 7;                  // VND
+  int64 paid_amount = 8;               // VND
+  string payment_method = 9;
+  optional int32 installment_months = 10;
+  string order_date = 11;              // YYYY-MM-DD
+  optional string delivered_date = 12; // YYYY-MM-DD, unset if not delivered
+  string status = 13;
+  string store = 14;
+  optional string customer_email = 15; // unset if the order has no known address
+}
+
+message GetProductRequest { string product_id = 1; }  // ^P\d+$, e.g. P001
+
+message Product {
+  string product_id = 1;
+  string name = 2;
+  int64 price = 3;  // VND
+  int32 warranty_months = 4;
+  int32 stock_total = 5;
+}
+
+message SearchProductsRequest {
+  string query = 1;  // at least 2 characters
+  int32 limit = 2;   // 0 = server default (5)
+}
+
+message ProductSummary {
+  string product_id = 1;
+  string name = 2;
+  int64 price = 3;  // VND
+}
+
+message SearchProductsResponse { repeated ProductSummary items = 1; }
+
+message GetStockRequest { string product_id = 1; }
+
+message Stock {
+  string product_id = 1;
+  int32 stock_total = 2;
+  map<string, int32> by_store = 3;
+}

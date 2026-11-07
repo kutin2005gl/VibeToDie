@@ -1,0 +1,40 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Node.js / Next.js
+node_modules/
+.next/
+dist/
+out/
+coverage/
+.npm-cache/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Go / Windows build
+bin/
+*.exe
+*.test
+
+# Local AI tools
+.codex/
+.claude/
+.impeccable/
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log

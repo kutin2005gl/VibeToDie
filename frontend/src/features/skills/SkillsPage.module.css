@@ -1,0 +1,31 @@
+.body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
+
+.sectionHead { display: flex; justify-content: space-between; margin-bottom: var(--space-3); }
+.sectionHead h2 { margin: 0; font-size: var(--fs-section); font-weight: 600; }
+.sectionHead span { color: var(--text-secondary); font-size: var(--fs-caption); font-variant-numeric: tabular-nums; }
+
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Cùng ngôn ngữ với thẻ agent của admin (features/agents), bỏ phần chạy máy vì đây là agent của riêng bạn */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-4);
+  background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+}
+.card header { display: flex; align-items: center; gap: var(--space-3); }
+.icon { display: grid; place-items: center; width: 32px; height: 32px; flex-shrink: 0; color: var(--series-7); }
+.names { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.names strong { font-size: var(--fs-section); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.names code { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card p {
+  margin: 0; color: var(--text-secondary); font-size: var(--fs-body); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+.chips { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); }
+.chip { padding: 2px 8px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 11px; }
+.meta { color: var(--text-secondary); font-size: 11px; }
+.card footer {
+  margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary); font-size: var(--fs-caption);
+}

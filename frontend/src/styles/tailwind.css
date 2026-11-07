@@ -1,0 +1,20 @@
+/*
+ * Tailwind cho component shadcn (src/components/ui). App vẫn dùng CSS module, nên chỉ nạp theme và
+ * utilities, bỏ preflight (reset của Tailwind) để giao diện hiện có không đổi. Biến không thuộc layer
+ * trong tokens.css thắng biến cùng tên trong layer theme (--radius-*, --font-mono), nên token của app giữ nguyên.
+ */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Màu shadcn trỏ vào token của app, nên đổi theo theme sáng/tối như phần còn lại */
+@theme inline {
+  --color-background: var(--bg-app);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-surface);
+  --color-muted: var(--bg-subtle);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--bg-subtle);
+  --color-accent-foreground: var(--text-primary);
+  --color-border: var(--border-subtle);
+}

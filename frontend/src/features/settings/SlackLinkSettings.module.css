@@ -1,0 +1,18 @@
+.section { border-bottom: 1px solid var(--border-subtle); padding-bottom: 17px; }
+.card {
+  padding: 16px; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+  background: var(--bg-subtle); font-size: var(--fs-body);
+}
+.card p { margin: 0 0 12px; }
+.command {
+  display: block; padding: 12px; border-radius: var(--radius-lg); background: var(--bg-surface);
+  color: var(--text-primary); overflow-wrap: anywhere; user-select: all;
+}
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0; }
+.timer, .note { font-size: var(--fs-caption); color: var(--text-secondary); }
+.card .note { margin-bottom: 0; }
+.copied, .copied:hover {
+  color: var(--success); background: var(--success-bg); border-color: var(--success-border);
+}
+.success { color: var(--success); font-size: var(--fs-caption); }
+.error { font-size: var(--fs-caption); color: var(--danger); margin: 8px 0 0; }

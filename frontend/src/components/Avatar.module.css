@@ -1,0 +1,10 @@
+.avatar {
+  display: inline-grid; place-items: center; border-radius: 50%;
+  color: var(--on-avatar); font-weight: 700; border: 2px solid var(--bg-surface); flex-shrink: 0;
+}
+.stack { display: inline-flex; align-items: center; }
+.stack .avatar + .avatar { margin-left: -6px; }
+.more {
+  margin-left: 4px; padding: 1px 6px; border-radius: var(--radius-sm);
+  background: var(--bg-surface-hover); color: var(--text-secondary); font-size: var(--fs-caption);
+}

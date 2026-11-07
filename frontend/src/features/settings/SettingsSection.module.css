@@ -1,0 +1,11 @@
+.section { max-width: 704px; margin: 0 auto; padding: 30px var(--space-6) 40px; }
+.title { margin: 0; padding-bottom: var(--space-3); font-size: var(--fs-title); font-weight: 600; border-bottom: 1px solid var(--border-subtle); }
+.row {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  padding: 17px 0; border-bottom: 1px solid var(--border-subtle);
+}
+.row:last-child { border-bottom: 0; }
+.text { min-width: 0; }
+.rowTitle { font-size: var(--fs-body); font-weight: 600; }
+.rowDesc { margin-top: 3px; font-size: var(--fs-caption); color: var(--text-muted); }
+.action { flex-shrink: 0; }

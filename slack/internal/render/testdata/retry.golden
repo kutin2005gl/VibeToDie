@@ -1,0 +1,21 @@
+== state
+done
+
+== timeline
+↪️ Chuyển cho Điều phối
+📋 Điều phối lập kế hoạch 2 bước
+▶️ *Tra cứu đơn DH1014 và phiếu hoàn tiền* · Đơn hàng
+      💬 Đơn hàng đã trả lời
+      ✅ Điều phối: Đã kiểm tra: thông tin khách hàng, email, sản phẩm và số đã thanh toán khớp hệ thống; riêng số tiền hoàn 9.432.000 ₫ hệ thống không có phiếu hoàn tiền nên chưa xác nhận được, cần kế toán cung cấp để đối chiếu.
+▶️ *Soạn email thông báo hoàn tiền cho khách* · Chăm sóc khách hàng
+      💬 Chăm sóc khách hàng đã trả lời
+      ↩️ Điều phối: Đã kiểm tra: thư không nêu mốc thời gian và nêu đúng hình thức chuyển khoản, nhưng đang ghi 9.432.000 ₫ như số tiền hoàn cuối cùng dù con số này chưa được xác nhận — cần soạn lại.
+      💬 Chăm sóc khách hàng đã trả lời
+      ✅ Điều phối: Đã kiểm tra email nháp: đúng yêu cầu, chưa gửi, chờ Kế toán xác nhận số tiền hoàn.
+✅ Xong. Kết quả ở tin bên dưới.
+
+== answer
+Chưa gửi được email thông báo hoàn tiền cho khách Nguyễn Văn An (đơn DH1014, sản phẩm OPPO Reno 12 256GB). Bản nháp đã được soạn nhưng không nêu số tiền hoàn 9.432.000 ₫ và chưa được gửi đi, vì hệ thống không tìm thấy phiếu hoàn tiền của đơn DH1014 để đối chiếu số tiền này.
+Bản nháp hiện viết rằng số tiền sẽ do Kế toán xác nhận sau — khác với thông tin nhân viên cung cấp là phiếu hoàn tiền đã được Kế toán trưởng duyệt với số tiền 9.432.000 ₫. Đề nghị xác nhận lại với Kế toán: nếu số tiền này đúng và đã có phiếu duyệt, hãy cập nhật số tiền vào thư rồi trình duyệt gửi cho khách. Các nội dung còn lại trong nháp đã đúng: hoàn bằng chuyển khoản vào tài khoản chính chủ, Kế toán sẽ thông báo thời gian cụ thể, không nêu mốc thời gian tiền về.
+Chưa có hành động nào đang chờ duyệt (email chưa được gửi).
+Cần xác nhận thêm: căn cứ khấu hao 20% (2.358.000 ₫) — lý do trả hàng và mốc thời gian giao máy.

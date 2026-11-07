@@ -1,0 +1,64 @@
+.scene { perspective: 1200px; }
+.inner {
+  display: grid; position: relative; min-height: 260px;
+  transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.flipped { transform: rotateY(180deg); }
+.face {
+  grid-area: 1 / 1; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.front { background: var(--bg-surface); cursor: pointer; }
+.front:hover, .front:focus-visible { border-color: var(--accent-strong); outline: 0; }
+.back { background: var(--bg-subtle); transform: rotateY(180deg); border-color: var(--border-subtle); }
+.back:focus-within { border-color: var(--accent-strong); }
+
+.face h3 { margin: 0; font-size: var(--fs-section); }
+.front p {
+  margin: 0; color: var(--text-secondary); font-size: var(--fs-caption); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+}
+.spark { margin-top: auto; }
+.bars { display: flex; align-items: flex-end; justify-content: space-between; height: 36px; border-bottom: 1px solid var(--border-subtle); }
+.bars i { width: 2px; background: var(--text-muted); }
+.axis { display: flex; justify-content: space-between; font-size: 9px; color: var(--text-muted); }
+.front footer { display: flex; justify-content: space-between; align-items: center; font-size: var(--fs-caption); color: var(--text-secondary); }
+.progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: transparent; }
+.progress div { height: 100%; background: var(--accent); }
+
+/* Cụm nút hiện khi rê chuột vào mặt trước */
+.tools {
+  position: absolute; top: 10px; right: 10px; display: flex; gap: 2px; padding: 2px;
+  background: var(--bg-app); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  opacity: 0; transition: opacity 0.12s;
+}
+.front:hover .tools, .front:focus-within .tools { opacity: 1; }
+.tools button, .undo {
+  width: 26px; height: 26px; display: grid; place-items: center; padding: 0;
+  border: 0; background: transparent; color: var(--text-secondary); border-radius: var(--radius-sm);
+}
+.tools button:hover, .undo:hover { background: var(--bg-surface-hover); color: var(--text-primary); }
+.tools button:focus-visible, .undo:focus-visible { outline: 1px solid var(--accent); }
+
+/* Mặt sau */
+.back header { display: flex; align-items: flex-start; justify-content: space-between; margin: -2px -4px 0 0; }
+.back h3 { font-size: var(--fs-body); }
+.back textarea {
+  flex: 1; min-height: 0; resize: none; padding: 0; border: 0; outline: 0;
+  background: transparent; color: var(--text-primary); font: inherit; font-size: var(--fs-caption); line-height: 1.5;
+}
+.back textarea::placeholder { color: var(--text-secondary); }
+.back footer { display: flex; align-items: center; justify-content: space-between; }
+.send {
+  width: 26px; height: 26px; display: grid; place-items: center; padding: 0;
+  border: 0; border-radius: var(--radius-sm); background: var(--accent); color: var(--on-accent);
+}
+.send:disabled { background: var(--bg-subtle); color: var(--text-muted); cursor: default; }
+.send:not(:disabled):hover { background: var(--accent-hover); }
+
+@media (prefers-reduced-motion: reduce) {
+  .inner { transition-duration: 0.01s; }
+}

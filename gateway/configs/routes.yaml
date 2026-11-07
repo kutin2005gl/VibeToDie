@@ -1,0 +1,121 @@
+# Gateway route table. ${VAR} in upstream is read from the environment.
+# The prefix is stripped before forwarding (/api/ai/run → /run) unless keep_prefix is true.
+# Only GET/HEAD/OPTIONS are retried; a POST is sent once whatever retry.attempts says.
+# max_body caps the request body in bytes (default 1 MiB, 413 above it).
+
+routes:
+  # Sign-in and sign-up are public, so auth is optional; user-service checks
+  # X-User-Id itself on /me and other private paths.
+  - name: user
+    prefix: /api/users
+    upstream: ${USER_SERVICE}
+    timeout: 5s
+    retry:
+      attempts: 3
+      base_delay: 200ms
+      max_delay: 1s
+    rate_limit:
+      requests: 60
+      window: 1m
+      burst: 20
+    auth_mode: optional
+
+  # Redeeming a Slack link code (user-service POST /slack-links/redeem) is anonymous: the code is
+  # the credential, so it gets a much tighter limit than /api/users. It can't live under
+  # /api/users (the router doesn't allow a path beside that wildcard), so it has its own prefix;
+  # stripping it leaves "/", which joins to the upstream path as /slack-links/redeem/.
+  - name: slack-redeem
+    prefix: /api/slack-links/redeem
+    upstream: ${USER_SERVICE}/slack-links/redeem
+    timeout: 5s
+    rate_limit:
+      requests: 60
+      window: 1m
+      burst: 10
+    auth_mode: none
+
+  - name: orders
+    prefix: /api/orders
+    upstream: ${ORDERS_SERVICE}
+    keep_prefix: true
+    timeout: 5s
+    retry:
+      attempts: 2
+      base_delay: 200ms
+      max_delay: 1s
+    rate_limit:
+      requests: 30
+      window: 1m
+      burst: 10
+    auth_mode: required
+
+  - name: products
+    prefix: /api/products
+    upstream: ${ORDERS_SERVICE}
+    keep_prefix: true
+    timeout: 5s
+    retry:
+      attempts: 2
+      base_delay: 200ms
+      max_delay: 1s
+    rate_limit:
+      requests: 30
+      window: 1m
+      burst: 10
+    auth_mode: required
+
+
+  # /run calls models: slow (Coordinator runs take minutes) and paid, so a long
+  # timeout, no retry and a tight limit per user. /run streams its progress as
+  # SSE: such requests get stream_timeout and are flushed event by event.
+  - name: ai
+    prefix: /api/ai
+    upstream: ${AI_SERVICE}
+    timeout: 180s
+    stream_timeout: 10m
+    retry:
+      attempts: 1
+    rate_limit:
+      requests: 10
+      window: 1m
+      burst: 3
+    auth_mode: required
+
+  # Staff sessions on ai-service, which serves /api/sessions itself (prefix kept).
+  # Runs go on in the background and clients follow them over SSE (one request per
+  # stream, reopened when it drops), so requests answer at once and the limit is
+  # wider than /api/ai.
+  - name: sessions
+    prefix: /api/sessions
+    upstream: ${AI_SERVICE}
+    keep_prefix: true
+    timeout: 15s
+    # GET /api/sessions/{id}/events with Accept: text/event-stream follows a run live
+    stream_timeout: 10m
+    retry:
+      attempts: 2
+      base_delay: 200ms
+      max_delay: 1s
+    rate_limit:
+      requests: 60
+      window: 1m
+      burst: 10
+    auth_mode: required
+
+  # Admin reads on ai-service (cost per department and user, full session traces),
+  # served at /api/admin itself (prefix kept). They call no model, so they get the
+  # sessions limit instead of /api/ai's. ai-service checks the admin department.
+  - name: admin
+    prefix: /api/admin
+    upstream: ${AI_SERVICE}
+    keep_prefix: true
+    timeout: 15s
+    retry:
+      attempts: 2
+      base_delay: 200ms
+      max_delay: 1s
+    rate_limit:
+      requests: 60
+      window: 1m
+      burst: 20
+    auth_mode: required

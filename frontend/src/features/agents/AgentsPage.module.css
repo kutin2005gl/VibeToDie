@@ -1,0 +1,9 @@
+.body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
+.sectionHead { display: flex; justify-content: space-between; margin-bottom: var(--space-3); }
+.sectionHead h2 { margin: 0; font-size: var(--fs-section); font-weight: 600; }
+.sectionHead span { color: var(--text-secondary); font-size: var(--fs-caption); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.empty { color: var(--text-muted); }
+.provider { display: flex; align-items: center; gap: var(--space-2); color: var(--text-secondary); font-size: var(--fs-caption); }
+.providerError { margin: 0; color: var(--danger); }

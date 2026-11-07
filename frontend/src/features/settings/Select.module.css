@@ -1,0 +1,9 @@
+.select { position: relative; display: inline-block; max-width: 100%; }
+.select select {
+  width: 100%; height: 32px; padding: 0 30px 0 10px; appearance: none;
+  background: var(--bg-input); color: var(--text-primary); font-size: var(--fs-body);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+}
+.select select:hover { background: var(--bg-input-hover); }
+.select select:focus-visible { outline: 1px solid var(--accent); }
+.select svg { position: absolute; right: 10px; top: 9px; pointer-events: none; color: var(--text-secondary); }

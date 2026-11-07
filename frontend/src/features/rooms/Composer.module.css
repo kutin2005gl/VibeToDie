@@ -1,0 +1,14 @@
+.wrap { padding: 0 var(--space-6) var(--space-4); }
+.box { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-3); }
+.box:focus-within { border-color: var(--accent); }
+.box textarea { width: 100%; resize: none; border: 0; outline: 0; background: transparent; font-size: var(--fs-section); }
+.box textarea::placeholder { color: var(--text-muted); }
+.row { display: flex; align-items: center; gap: 2px; margin-top: var(--space-2); }
+.row button { border: 0; background: transparent; color: var(--text-secondary); padding: 5px; border-radius: var(--radius-sm); display: grid; place-items: center; }
+.row button:hover:not(:disabled) { background: var(--bg-surface-hover); }
+.row .send { margin-left: auto; color: var(--accent); }
+.row .send:disabled { color: var(--text-muted); cursor: default; }
+/* Đang chạy: nút tròn đặc thay cho mũi tên gửi, bấm để dừng. */
+.row .stop { width: 28px; height: 28px; padding: 0; border-radius: 50%; background: var(--accent); color: var(--on-accent); }
+.row .stop:hover:not(:disabled) { background: var(--accent); opacity: 0.85; }
+.row .stop:disabled { background: var(--accent-muted); color: var(--on-accent); }

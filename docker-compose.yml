@@ -1,0 +1,137 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-nexus-dev-only}
+      POSTGRES_DB: nexus
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexus -d nexus"]
+      interval: 3s
+      retries: 20
+
+  ai:
+    build: ./ai-service
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      AI_ALLOW_FAKE: ${AI_ALLOW_FAKE:-}
+      # Only the gateway reaches ai-service (no published port), so X-User-* is the gateway's
+      AI_TRUST_IDENTITY_HEADERS: "1"
+      ORDERS_SERVICE_URL: http://order-service:8080
+      # gRPC to order-service is used only when both are set (else HTTP above)
+      ORDERS_GRPC_ADDR: ${ORDERS_GRPC_ADDR:-}
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}
+      # Self-hosted embeddings for policy search; the model and size must match what ingest_knowledge.py stored
+      EMBEDDING_URL: http://embedding:80
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-intfloat/multilingual-e5-small}
+      EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-384}
+      # bm25 (default) or hybrid (BM25 + vectors, RRF); hybrid falls back to BM25 when db or embedding fails
+      AI_RETRIEVER: ${AI_RETRIEVER:-bm25}
+    depends_on:
+      # Optional: if embedding never gets healthy, ai still starts and searches with BM25
+      embedding:
+        condition: service_healthy
+        required: false
+
+  # Text embeddings for policy search (plan-rag step 8). No published port: policy text stays on this network.
+  # The first start downloads the model weights from Hugging Face into the volume; later starts reuse them.
+  # TEI cpu-1.8 ignores HF_HUB_OFFLINE (checked 01/11), so it is not set here.
+  embedding:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.8
+    command: ["--model-id", "${EMBEDDING_MODEL:-intfloat/multilingual-e5-small}", "--port", "80", "--max-batch-tokens", "2048"]
+    volumes:
+      - embeddingdata:/data
+    # A ceiling to protect the other services on a small machine; 1536m was killed while warming up (measured 31/10)
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:80/health || exit 1"]
+      interval: 5s
+      retries: 30
+      start_period: 20s
+
+  user-service:
+    build: ./user-service
+    environment:
+      # USER_DATABASE_URL in .env points it at another Postgres (e.g. Neon); default is the local db
+      DATABASE_URL: ${USER_DATABASE_URL:-postgres://nexus:${POSTGRES_PASSWORD:-nexus-dev-only}@db:5432/nexus?sslmode=disable}
+      # Same secret and issuer as the gateway, which verifies the tokens this service signs
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env (at least 32 characters)}
+      JWT_ISSUER: ${JWT_ISSUER:-nexus}
+      # First admin (executive) on a fresh database; it grants departments to other accounts
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:-}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:-}
+    # No published port: it trusts X-User-Id, which only the gateway may set
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Slack bot for staff (Socket Mode: it dials out to Slack, so nothing is published).
+  # Settings come from the root .env. Without them it exits at start listing the missing values; the rest of the stack is unaffected.
+  slack:
+    build: ./slack
+    environment:
+      SLACK_BOT_TOKEN: ${SLACK_BOT_TOKEN:-}
+      SLACK_APP_TOKEN: ${SLACK_APP_TOKEN:-}
+      SLACK_TOKEN_KEY: ${SLACK_TOKEN_KEY:-}
+      NEXUS_PROVIDER: ${NEXUS_PROVIDER:-}
+      SLACK_DRY_RUN: ${SLACK_DRY_RUN:-}
+      # Web address staff open rooms at (e.g. http://localhost:3000); unset, answers carry no "Mở trên web" button
+      BOA_WEB_URL: ${BOA_WEB_URL:-}
+      # SLACK_DATABASE_URL in the root .env points it at another Postgres (e.g. Neon); default is the local db
+      SLACK_DATABASE_URL: ${SLACK_DATABASE_URL:-postgres://nexus:${POSTGRES_PASSWORD:-nexus-dev-only}@db:5432/nexus?sslmode=disable}
+      # The bot is a client of the gateway, like the web: it holds only each person's own tokens
+      NEXUS_URL: http://gateway:8080
+    depends_on:
+      db:
+        condition: service_healthy
+      gateway:
+        condition: service_started
+
+  order-service:
+    build: ./order-service
+    environment:
+      # ORDERS_DATABASE_URL in .env points it at another Postgres (e.g. Neon); default is the local db
+      DATABASE_URL: ${ORDERS_DATABASE_URL:-postgres://nexus:${POSTGRES_PASSWORD:-nexus-dev-only}@db:5432/nexus?sslmode=disable}
+      ORDERS_SEED: "1"
+      # gRPC for ai-service (port 9090, not published); closed while INTERNAL_TOKEN is empty
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}
+    # No published port: reachable only via gateway and ai
+    depends_on:
+      db:
+        condition: service_healthy
+
+  gateway:
+    build: ./gateway
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env (at least 32 characters)}
+      JWT_ISSUER: ${JWT_ISSUER:-nexus}
+      AI_SERVICE: http://ai:8000
+      USER_SERVICE: http://user-service:8080
+      ORDERS_SERVICE: ${ORDERS_SERVICE:-http://order-service:8080}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+    ports:
+      - "${GATEWAY_PORT:-8080}:8080"
+    depends_on:
+      - ai
+      - user-service
+      - order-service
+
+  # Web (Next.js BFF): the browser talks only to it; it calls the gateway with the user's cookie token.
+  frontend:
+    build: ./frontend
+    environment:
+      GATEWAY_URL: http://gateway:8080
+      # Plain http on a bare IP: browsers drop `secure` cookies there. Set true once behind HTTPS.
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - gateway
+
+volumes:
+  dbdata:
+  embeddingdata:

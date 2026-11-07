@@ -1,0 +1,53 @@
+{
+  "display_information": {
+    "name": "Trợ lý BOA",
+    "description": "Hỏi BOA ngay trong Slack bằng tài khoản của chính bạn.",
+    "background_color": "#1f2937"
+  },
+  "features": {
+    "app_home": {
+      "home_tab_enabled": false,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": false
+    },
+    "bot_user": {
+      "display_name": "tro-ly-boa",
+      "always_online": true
+    },
+    "slash_commands": [
+      {
+        "command": "/boa",
+        "description": "Liên kết tài khoản và xem trạng thái",
+        "usage_hint": "link <mã> | unlink | status | help",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "app_mentions:read",
+        "chat:write",
+        "commands",
+        "im:history",
+        "im:read",
+        "im:write",
+        "users:read"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "app_mention",
+        "message.im"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false
+  }
+}
