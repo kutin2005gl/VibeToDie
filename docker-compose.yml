@@ -7,20 +7,19 @@ services:
       POSTGRES_DB: nexus
     volumes:
       - dbdata:/var/lib/postgresql/data
-      - ./backend/migrations:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U nexus -d nexus"]
       interval: 3s
       retries: 20
 
   ai:
-    build: ./ai
+    build: ./ai-service
     env_file:
       - path: .env
         required: false
     environment:
       AI_ALLOW_FAKE: ${AI_ALLOW_FAKE:-}
-      # Only the gateway and backend reach ai-service (no published port), so X-User-* is the gateway's
+      # Only the gateway reaches ai-service (no published port), so X-User-* is the gateway's
       AI_TRUST_IDENTITY_HEADERS: "1"
       ORDERS_SERVICE_URL: http://order-service:8080
       # gRPC to order-service is used only when both are set (else HTTP above)
@@ -53,18 +52,6 @@ services:
       interval: 5s
       retries: 30
       start_period: 20s
-
-  api:
-    build: ./backend
-    environment:
-      DATABASE_URL: postgres://nexus:${POSTGRES_PASSWORD:-nexus-dev-only}@db:5432/nexus?sslmode=disable
-      AI_URL: http://ai:8000
-    # No published port: clients reach /api/tasks only through the gateway
-    depends_on:
-      db:
-        condition: service_healthy
-      ai:
-        condition: service_started
 
   user-service:
     build: ./user-service
@@ -123,7 +110,6 @@ services:
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env (at least 32 characters)}
       JWT_ISSUER: ${JWT_ISSUER:-nexus}
       AI_SERVICE: http://ai:8000
-      TASKS_SERVICE: http://api:8080
       USER_SERVICE: http://user-service:8080
       ORDERS_SERVICE: ${ORDERS_SERVICE:-http://order-service:8080}
       CORS_ORIGINS: ${CORS_ORIGINS:-}
@@ -131,7 +117,6 @@ services:
       - "${GATEWAY_PORT:-8080}:8080"
     depends_on:
       - ai
-      - api
       - user-service
       - order-service
 

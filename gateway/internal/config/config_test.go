@@ -7,7 +7,7 @@ import (
 )
 
 func TestShippedRoutesParse(t *testing.T) {
-	for _, k := range []string{"USER_SERVICE", "ORDERS_SERVICE", "AI_SERVICE", "TASKS_SERVICE"} {
+	for _, k := range []string{"USER_SERVICE", "ORDERS_SERVICE", "AI_SERVICE"} {
 		t.Setenv(k, "http://"+strings.ToLower(k)+":8080")
 	}
 	data, err := os.ReadFile("../../configs/routes.yaml")
@@ -25,7 +25,7 @@ func TestShippedRoutesParse(t *testing.T) {
 	if ai := byName["ai"]; ai.Upstream != "http://ai_service:8080" || ai.AuthMode != AuthRequired || ai.Retry.Attempts != 1 {
 		t.Fatalf("ai route %+v", ai)
 	}
-	if !byName["tasks"].KeepPrefix || byName["tasks"].AuthMode != AuthRequired || byName["user"].AuthMode != AuthOptional {
+	if byName["user"].AuthMode != AuthOptional {
 		t.Fatalf("routes %+v", byName)
 	}
 	if !byName["orders"].KeepPrefix || !byName["products"].KeepPrefix {

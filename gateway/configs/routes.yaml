@@ -119,20 +119,3 @@ routes:
       window: 1m
       burst: 20
     auth_mode: required
-
-  # backend/ (tasks + staff decisions) serves /api/tasks itself, so the prefix
-  # is kept. It forwards X-User-* to ai-service, so agents run as the requester.
-  - name: tasks
-    prefix: /api/tasks
-    upstream: ${TASKS_SERVICE}
-    keep_prefix: true
-    timeout: 180s
-    # POST /api/tasks with Accept: text/event-stream relays the run's progress
-    stream_timeout: 10m
-    retry:
-      attempts: 1
-    rate_limit:
-      requests: 30
-      window: 1m
-      burst: 10
-    auth_mode: required
