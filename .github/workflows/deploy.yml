@@ -35,7 +35,7 @@ jobs:
       - name: Copy source to the host
         run: |
           rsync -az --delete \
-            --exclude .git --exclude .github --exclude frontend \
+            --exclude .git --exclude .github \
             --exclude node_modules --exclude .env --exclude '.env.*' \
             -e "ssh -i ~/.ssh/ec2.pem" \
             ./ "${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:~/app/"

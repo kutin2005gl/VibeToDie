@@ -120,6 +120,18 @@ services:
       - user-service
       - order-service
 
+  # Web (Next.js BFF): the browser talks only to it; it calls the gateway with the user's cookie token.
+  frontend:
+    build: ./frontend
+    environment:
+      GATEWAY_URL: http://gateway:8080
+      # Plain http on a bare IP: browsers drop `secure` cookies there. Set true once behind HTTPS.
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - gateway
+
 volumes:
   dbdata:
   embeddingdata:
