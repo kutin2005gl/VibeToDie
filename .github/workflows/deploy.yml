@@ -1,11 +1,11 @@
-# Deploy the backend stack to one EC2 host on every push to main (or by hand from the Actions tab).
+# Deploy the backend stack to one EC2 host on every push to main or develop (or by hand from the Actions tab).
 # The source is copied over SSH and built on the host with Docker Compose; .env stays on the host only.
 # Secrets: EC2_HOST (public IP or DNS), EC2_USER (ubuntu), EC2_SSH_KEY (contents of the .pem key).
 name: deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   workflow_dispatch:
 
 concurrency:
