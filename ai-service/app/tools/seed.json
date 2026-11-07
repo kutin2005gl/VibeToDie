@@ -1,0 +1,59 @@
+{
+  "_note": "DỮ LIỆU MẪU cho demo, chưa được Owner duyệt (gate B-15). Không phải chính sách thật.",
+  "orders": {
+    "DH1001": {
+      "order_id": "DH1001",
+      "customer_name": "Huỳnh Phúc Hoàng Nhật",
+      "customer_email": "nhattin1402@gmail.com",
+      "product_id": "P001",
+      "product_name": "iPhone 16 128GB",
+      "quantity": 1,
+      "unit_price": 22990000,
+      "discount": 1000000,
+      "paid_amount": 21990000,
+      "payment_method": "chuyển khoản",
+      "order_date": "2026-10-15",
+      "delivered_date": "2026-10-17",
+      "status": "delivered",
+      "store": "CN Quận 1"
+    },
+    "DH1002": {
+      "order_id": "DH1002",
+      "customer_name": "Trần Thị Bình",
+      "customer_email": "binh.tran@example.com",
+      "product_id": "P002",
+      "product_name": "Samsung Galaxy S25 256GB",
+      "quantity": 1,
+      "unit_price": 18490000,
+      "discount": 0,
+      "paid_amount": 0,
+      "payment_method": "trả góp qua thẻ tín dụng",
+      "installment_months": 6,
+      "order_date": "2026-10-19",
+      "delivered_date": null,
+      "status": "shipping",
+      "store": "CN Thủ Đức"
+    },
+    "DH1003": {
+      "order_id": "DH1003",
+      "customer_name": "Lê Minh Châu",
+      "customer_email": "chau.le@example.com",
+      "product_id": "P003",
+      "product_name": "Xiaomi 15 256GB",
+      "quantity": 1,
+      "unit_price": 14990000,
+      "discount": 500000,
+      "paid_amount": 14490000,
+      "payment_method": "tiền mặt",
+      "order_date": "2026-08-28",
+      "delivered_date": "2026-09-01",
+      "status": "delivered",
+      "store": "CN Quận 1"
+    }
+  },
+  "products": {
+    "P001": {"product_id": "P001", "name": "iPhone 16 128GB", "price": 22990000, "warranty_months": 12, "stock_total": 14},
+    "P002": {"product_id": "P002", "name": "Samsung Galaxy S25 256GB", "price": 18490000, "warranty_months": 12, "stock_total": 6},
+    "P003": {"product_id": "P003", "name": "Xiaomi 15 256GB", "price": 14990000, "warranty_months": 18, "stock_total": 0}
+  }
+}

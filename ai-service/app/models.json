@@ -1,0 +1,67 @@
+{
+  "models": [
+    {
+      "id": "claude-opus",
+      "dialect": "anthropic",
+      "model": "claude-opus-5-5",
+      "api_key_ref": "env:ANTHROPIC_API_KEY",
+      "fallbacks": "default",
+      "price_input_per_mtok": 4.0,
+      "price_output_per_mtok": 20.0
+    },
+    {
+      "id": "claude-sonnet",
+      "dialect": "anthropic",
+      "model": "claude-sonnet-5-5",
+      "api_key_ref": "env:ANTHROPIC_API_KEY",
+      "fallbacks": "default",
+      "price_input_per_mtok": 2.0,
+      "price_output_per_mtok": 10.0
+    },
+    {
+      "id": "claude-haiku",
+      "dialect": "anthropic",
+      "model": "claude-haiku-5-5",
+      "api_key_ref": "env:ANTHROPIC_API_KEY",
+      "price_input_per_mtok": 0.1,
+      "price_output_per_mtok": 0.5
+    },
+    {
+      "id": "gpt-main",
+      "dialect": "openai_responses",
+      "model": "${OPENAI_MODEL}",
+      "api_key_ref": "env:OPENAI_API_KEY",
+      "price_input_per_mtok": 0.042,
+      "price_output_per_mtok": 0
+    },
+    {
+      "id": "deepseek-pro",
+      "dialect": "openai_compat",
+      "model": "deepseek-v4-pro",
+      "base_url": "https://api.deepseek.com",
+      "api_key_ref": "env:DEEPSEEK_API_KEY",
+      "capabilities": {"send_reasoning_back": true},
+      "price_input_per_mtok": 0.66,
+      "price_output_per_mtok": 1.98,
+      "peak": {"price_input_per_mtok": 1.32, "price_output_per_mtok": 3.96, "utc_offset_hours": 7,
+               "weekdays": [0, 1, 2, 3, 4], "hours": ["08:00-11:00", "13:00-17:00"]}
+    },
+    {
+      "id": "deepseek-flash",
+      "dialect": "openai_compat",
+      "model": "deepseek-v4-flash",
+      "base_url": "https://api.deepseek.com",
+      "api_key_ref": "env:DEEPSEEK_API_KEY",
+      "capabilities": {"send_reasoning_back": true},
+      "price_input_per_mtok": 0.15,
+      "price_output_per_mtok": 0.60,
+      "peak": {"price_input_per_mtok": 0.30, "price_output_per_mtok": 1.20, "utc_offset_hours": 7,
+               "weekdays": [0, 1, 2, 3, 4], "hours": ["08:00-11:00", "13:00-17:00"]}
+    }
+  ],
+  "profiles": {
+    "anthropic": {"strong": "claude-sonnet", "standard": "claude-sonnet", "cheap": "claude-haiku"},
+    "openai": {"strong": "gpt-main", "standard": "gpt-main", "cheap": "gpt-main"},
+    "deepseek": {"strong": "deepseek-pro", "standard": "deepseek-flash", "cheap": "deepseek-flash"}
+  }
+}
