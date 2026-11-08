@@ -23,3 +23,7 @@
 .table td { padding: 10px var(--space-3); }
 .right { text-align: right !important; }
 .empty { text-align: center; padding: var(--space-6) !important; font-size: var(--fs-caption); color: var(--text-secondary); }
+@media (max-width: 640px) {
+  .table { display: block; overflow-x: auto; white-space: nowrap; }
+  .filterBar { flex-wrap: wrap; }
+}

@@ -9,3 +9,4 @@
 .rowTitle { font-size: var(--fs-body); font-weight: 600; }
 .rowDesc { margin-top: 3px; font-size: var(--fs-caption); color: var(--text-muted); }
 .action { flex-shrink: 0; }
+@media (max-width: 640px) { .section { padding: var(--space-5) var(--space-4) var(--space-8, 32px); } }

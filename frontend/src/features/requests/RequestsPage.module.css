@@ -42,4 +42,4 @@
   font-weight: 400;
   font-display: swap;
 }
-.boaName { font-family: 'SVN Be Cool', cursive; font-weight: 400; font-synthesis: none; }
+.boaName { font-family: 'SVN Be Cool', cursive; font-weight: 400; font-synthesis: none; }@media (max-width: 640px) { .column { padding: var(--space-4) var(--space-3) 32px; } }

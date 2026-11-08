@@ -65,3 +65,4 @@
 .buttons button { height: 34px; padding: 0 14px; }
 .buttons button:disabled { opacity: 0.5; cursor: default; }
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .twoCol { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .top, .agents, .footer { padding-left: var(--space-4); padding-right: var(--space-4); } .grid { grid-template-columns: minmax(0, 1fr); } }
