@@ -58,6 +58,9 @@ function DeleteRoom({ title, onDelete }: { title: string; onDelete: () => Promis
 interface Props {
   collapsed: boolean
   onToggle: () => void
+  // Chế độ ngăn kéo (màn hẹp): drawerOpen điều khiển trượt vào/ra, onNavigate đóng lại sau khi chọn mục.
+  drawerOpen?: boolean
+  onNavigate?: () => void
 }
 
 interface Tip { label: string; top: number; left: number }
@@ -93,7 +96,7 @@ function Group({ children }: { children: ReactNode }) {
   return <nav className={styles.group}>{children}</nav>
 }
 
-export function Sidebar({ collapsed, onToggle }: Props) {
+export function Sidebar({ collapsed, onToggle, drawerOpen = false, onNavigate }: Props) {
   const asideRef = useRef<HTMLElement>(null)
   // Một nền highlight duy nhất ở cấp sidebar (như mode "parent" của animate-ui):
   // không gỡ/gắn lại khi đổi mục nên không chớp, chỉ spring tới vị trí mục mới.
@@ -142,8 +145,9 @@ export function Sidebar({ collapsed, onToggle }: Props) {
     <MotionConfig reducedMotion="user">
       <aside
         ref={asideRef}
-        className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}
+        className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''} ${drawerOpen ? styles.drawerOpen : ''}`}
         onMouseLeave={leave}
+        onClick={(e) => { if ((e.target as HTMLElement).closest(`a, .${styles.subItem}`)) onNavigate?.() }}
         onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) leave() }}
       >
         {box && (

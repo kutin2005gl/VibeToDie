@@ -24,3 +24,4 @@
 }
 .submit:hover:not(:disabled) { background: var(--accent-hover); }
 .submit:disabled { opacity: 0.7; cursor: default; }
+@media (max-width: 480px) { .card { padding: 28px 20px; } }

@@ -142,3 +142,23 @@
   font-size: var(--fs-caption); font-weight: 500; white-space: nowrap; pointer-events: none;
   box-shadow: var(--shadow-pop);
 }
+
+/* Màn hẹp: sidebar là ngăn kéo cố định bên trái, luôn ở dạng đầy đủ (không thu gọn), trượt vào khi mở. */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 100;
+    width: min(280px, 85vw); overflow-y: auto;
+    transform: translateX(-100%); visibility: hidden;
+    transition: transform 250ms ease-out, visibility 0s linear 250ms;
+    box-shadow: var(--shadow-pop);
+  }
+  .sidebar.drawerOpen { transform: none; visibility: visible; transition: transform 250ms ease-out; }
+  .rail { display: none; }
+  .subList { max-height: max(160px, calc(100dvh - 330px)); }
+  .subList.admin { max-height: max(120px, calc(100dvh - 490px)); }
+  /* Ngón tay cần vùng bấm lớn hơn chuột */
+  .item { height: 44px; }
+  .subItem { height: 40px; }
+  .delete { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .sidebar { transition: none; } }

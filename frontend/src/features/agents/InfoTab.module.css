@@ -6,3 +6,4 @@
 .section + .section { margin-top: 24px; }
 .section h2 { margin: 0 0 8px; font-size: var(--fs-section); font-weight: 600; }
 .list dd span { display: block; }
+@media (max-width: 640px) { .wrap { padding: var(--space-4) var(--space-4) 32px; } .list div { grid-template-columns: 1fr; } }
